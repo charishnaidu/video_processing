@@ -80,8 +80,11 @@ def extract_frames(video):
     vidcap = cv2.VideoCapture(video)
     success, image = vidcap.read()
     count = 0
+    font = cv2.FONT_HERSHEY_SIMPLEX
     while success:
         write_path = os.path.join(out_path, 'frame_%04d.png' % count)
+        cv2.putText(image, 'Exercise name : HighLunge_Right', (10, 200), font, 1, (255, 255, 255), 2)
+        cv2.putText(image, 'Exercise Orientation : Right', (10, 235), font, 1, (255, 255, 255), 2)
         cv2.imwrite(write_path, image)
         success, image = vidcap.read()
         count += 1
